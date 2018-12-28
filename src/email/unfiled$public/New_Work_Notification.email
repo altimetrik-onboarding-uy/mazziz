@@ -1,0 +1,11 @@
+{!Work__c.Contact__c},
+The work {!Work__c.Name} has been assigned to you. The title is {!Work__c.Title__c}.
+
+The description is the following:
+
+{!Work__c.Description__c} 
+
+Details here: {!Work__c.Link}
+
+Please confirm this action.
+Thank you.
