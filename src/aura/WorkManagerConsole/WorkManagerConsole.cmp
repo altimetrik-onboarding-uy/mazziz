@@ -1,0 +1,33 @@
+<aura:component controller="WorkCardController" implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId" access="global">
+  <!--ATTRIBUTES AND HANDLERS-->
+  <aura:attribute name="recordId" type="Id" />
+
+  <aura:attribute name="worksIndex" type="List" default="['New', 'Ready', 'InProgress','Done']"/>
+<!-- Formato del indice de tipos worksIndex
+ worksIndex = ['new', 'ready', ...]-->
+
+  <aura:attribute name="error" type="String" />
+  <aura:attribute name="record" type="Object" />
+  <aura:attribute name="work" type="Work__c" />
+  
+  <force:recordData aura:id="workService"
+  layoutType="FULL"
+  recordId="{!v.work.Id}"
+  targetError="{!v.error}"
+  targetRecord="{!v.work}"
+  targetFields ="{!v.work}"/>
+
+<!-- GRILLA se genera iterando una vez por cada tipo de work-->
+
+<div class="slds-grid slds-wrap">
+    <div class="slds-col"></div>
+      <aura:if isTrue="{!v.worksIndex.length &gt; 0}">
+        <!-- Paso el tipo de work de cada columna definidos anteriormente en el atributo worksindex-->
+        <aura:iteration items="{!v.worksIndex}" var="item">
+          <c:WorkColumn workType="{!item}"/>
+        </aura:iteration>
+      </aura:if>
+    
+</div>
+
+</aura:component>

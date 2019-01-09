@@ -3,6 +3,7 @@
     <defaultLandingTab>standard-home</defaultLandingTab>
     <label>Work Manager</label>
     <tab>Work__c</tab>
+    <tab>Work_Manager</tab>
     <tab>standard-Contact</tab>
     <tab>standard-report</tab>
 </CustomApplication>
