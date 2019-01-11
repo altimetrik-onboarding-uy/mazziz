@@ -1,9 +1,18 @@
 <aura:component controller="WorkCardController" implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId" access="global">
     <aura:attribute name="workList" type="Object[]"/>
     <aura:attribute name="workType" type="String"/>
-    <aura:attribute name="recordId" type="Id" />
-    
+    <aura:attribute name="contactId" type="String"/>
+
+    <aura:handler event="force:showToast" action="{!c.doInit}"/>
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <force:recordData aura:id="recordEditor"
+        layoutType="FULL"
+        recordId="{!v.recordId}"
+        targetError="{!v.recordError}"
+        targetRecord="{!v.contact}"
+        targetFields ="{!v.simpleRecord}"
+        mode="EDIT" />
 
     <div class="slds-col">
                 <article class="slds-card">
