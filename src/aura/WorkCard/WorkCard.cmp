@@ -19,18 +19,18 @@
 		targetRecord="{!v.record}"
 		targetFields ="{!v.work}"/>
 
-<!-- Genero una card para el contenido de cada work-->
+<!-- The card for the content of each work is generated-->
 	<div class="slds-card__body slds-card__body_inner">
 			<article class="slds-card slds-card_boundary">
 			  <div class="slds-card__header slds-grid">
 				<header class="slds-media slds-media_center slds-has-flexi-truncate">
 				  <div class="slds-media__figure">
-						<!-- Seteo el icono de cada card llamando al metodo icon del controlador-->
+						<!-- I call the icon generator method in the controller to set each card icon-->
 					<img src="{!v.icon}" class="slds-avatar_large slds-avatar_circle" alt="{!v.work.Title__c}"/>
 				  </div>
 				  <div class="slds-media__body">
 					<h2 class="slds-card__header-title">
-						<!-- Agrego un href en el titulo para llamar a la funcion de edit-->
+						<!-- I have an href in the title to call the edit function -->
 						<a onclick="{!c.edit}">
 							<h3 class="slds-text-heading_small slds-m-bottom_xx-small">{!v.work.Title__c}</h3>
 						</a> 
@@ -38,7 +38,7 @@
 				  </div>
 				</header>
 				</div>
-					<!-- Creo un badge y agrego la dificultad buscandola en el atributo work, concretamente su propiedad difficulty-->
+					<!--  I create a badge and add the difficulty looking for it in the attribute work, concretely its property difficulty-->
 			  <div class="slds-card__body slds-card__body_inner">
 					<lightning:layout multipleRows="true">
 							<lightning:layoutItem size="2">

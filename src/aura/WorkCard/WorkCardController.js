@@ -1,21 +1,21 @@
 ({
-    //En el do init de cada card cargo el tipo de icono dependiendo de lo devuelva el helper
+    //In the "doInit" from each card, load the type of icon depending on the helper's answer
     doInit: function(component, event, helper){
         var icon = helper.generateIconPath(component, event, helper);
         component.set('v.icon', icon);
 
 
     },
-    //El edit es llamado desde el href en el titulo y utilizo el editRecord para abrir la ventana de edicion
+    //The "edit" method is called from the href in the title and then use the editRecord to open the edit window.
     edit : function(component, event, helper) {
 
-        //Creo un nuevo evento por defecto del tipo editRecord
+        //I create a new default event of type editRecord
         var editRecordEvent = $A.get("e.force:editRecord");
-        //Seteo los parametros del evento que voy a disparar, en este caso el id del work
+        //I set the parameters of the event that I am going to shoot, in this case the id of the work
         editRecordEvent.setParams({
             "recordId": component.get("v.recordId")
         });
-        //Disparo el evento
+        //fire the event
         editRecordEvent.fire();
     }
 })

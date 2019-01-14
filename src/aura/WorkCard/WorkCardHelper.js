@@ -1,9 +1,9 @@
 ({
-    //Genero un string con el path que sera ubicado en el atributo icon de un componente, el cual dependera del Tipo que este tenga seteado
+    //I generate a String with the path that will be located in the icon attribute of a component, which will depend on the type it has set
     generateIconPath : function (component,event,helper){
-        //Obtengo el tipo
+        //Obtain the type
         var work = component.get("v.work");
-        //Dependiendo del mismo retorno un string con el path a un icono
+        //Depending on the type, return a string with the path to an icon
         switch(work.Type__c) {
             case "Idea":
             return "http://www.wvsadd.org/images/Icon3.png";

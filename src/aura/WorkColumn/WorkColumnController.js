@@ -1,19 +1,25 @@
 ({
     doInit: function(component, event, helper){
 
-        var estado = component.get("v.workType");
-        var work = component.get("v.contactId");
-        console.log(work)
+        //obtain the status and the contact id from the view
+        var workStatus = component.get("v.workType");
+        var contactId = component.get("v.contactId");
 
         var aux = null;
-            if(estado==="New"){
-                if(work===null){
+        //Verify the status type
+            if(workStatus==="New"){
+                //Verify if the contact id is null or not to determine if i am in a ontact record view
+
+                //If not, i get all the works
+                if(contactId===null){
                     aux = component.get("c.getWorksNew");
+
+                    //if true, i get the works just for the particular contact id
                 }else{
                     aux = component.get("c.getWorksForContact");
                     aux.setParams({
-                        "id":work,
-                        "estado":estado
+                        "id":contactId,
+                        "workStatus":workStatus
                     });
                 }
                 
@@ -23,14 +29,14 @@
                 });
                 $A.enqueueAction(aux);
             }
-            if(estado ==='Ready'){
-                if(work===null){
+            if(workStatus ==='Ready'){
+                if(contactId===null){
                     aux = component.get("c.getWorksReady");
                 }else{
                     aux = component.get("c.getWorksForContact");
                     aux.setParams({
-                        "id":work,
-                        "estado":estado
+                        "id":contactId,
+                        "workStatus":workStatus
                     });
                 }
                 aux.setCallback(this, function(res){
@@ -39,14 +45,14 @@
                 });
                 $A.enqueueAction(aux);
             }
-            if(estado ==='InProgress'){
-                if(work===null){
+            if(workStatus ==='InProgress'){
+                if(contactId===null){
                     aux = component.get("c.getWorksInProgress");
                 }else{
                     aux = component.get("c.getWorksForContact");
                     aux.setParams({
-                        "id":work,
-                        "estado":estado
+                        "id":contactId,
+                        "workStatus":workStatus
                     });
                 }
                 aux.setCallback(this, function(res){
@@ -55,14 +61,14 @@
                 });
                 $A.enqueueAction(aux);
             }
-            if(estado ==='Done'){
-                if(work===null){
+            if(workStatus ==='Done'){
+                if(contactId===null){
                     aux = component.get("c.getWorksDone");
                 }else{
                     aux = component.get("c.getWorksForContact");
                     aux.setParams({
-                        "id":work,
-                        "estado":estado
+                        "id":contactId,
+                        "workStatus":workStatus
                     });
                 }
                 aux.setCallback(this, function(res){
