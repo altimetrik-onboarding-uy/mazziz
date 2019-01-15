@@ -2,7 +2,8 @@ public with sharing class WorkCardController {
     //Methods to return a list for each type of state
     @AuraEnabled
     public static List<Work__c> getWorksNew () {
-        return [SELECT Id, Title__c, Type__c, Difficulty__c,Status__c FROM Work__c WHERE Start_Date__c  = LAST_N_DAYS:30 AND Status__c = 'New' ] ;
+        //
+        return [SELECT Id, Title__c, Type__c, Difficulty__c,Status__c FROM Work__c WHERE CreatedDate  = LAST_N_DAYS:30 AND Status__c = 'New' ] ;
     }
      @AuraEnabled
         public static List<Work__c> getWorksReady () {
