@@ -1,0 +1,46 @@
+<aura:component controller="WorkCardController" implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId" access="global">
+    <aura:attribute name="workList" type="Object[]"/>
+    <aura:attribute name="workType" type="String"/>
+    <aura:attribute name="contactId" type="String"/>
+
+    <!--I add a handler to catch each time that a record is seccesfull changed based on the showToast event-->
+    <aura:handler event="force:showToast" action="{!c.doInit}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <force:recordData aura:id="recordEditor"
+        layoutType="FULL"
+        recordId="{!v.recordId}"
+        targetError="{!v.recordError}"
+        targetRecord="{!v.contact}"
+        targetFields ="{!v.simpleRecord}"
+        mode="EDIT" />
+
+    <div class="slds-col">
+                <article class="slds-card">
+                        <div class="slds-card__header slds-grid">
+                          <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                            <div class="slds-media__body">
+                              <h2 class="slds-card__header-title">
+                                <!-- I set the work tipe in the title of each column based on the work type attribute-->
+                                <span>{!v.workType}</span>
+                              </h2>
+                            </div>
+                          </header>
+                        </div>
+                        
+                        <!-- I do an iteration in the work list and create a card with each work calling the WorkCard component-->
+                        <aura:if isTrue="{!v.workList.length &gt; 0}">
+                          <aura:iteration items="{!v.workList}" var="item">
+                            <!-- for each card, i provide the complete work object and the id-->
+                            <c:WorkCard work="{!item}" recordId="{!item.Id}"/>
+                          </aura:iteration>
+                          <aura:set attribute="else">
+                            <h3 class="slds-text-small slds-text-color_error">No works found.</h3>
+                          </aura:set>
+                        </aura:if>
+                </article>
+    </div>
+    
+    <div class="slds-col"></div>
+
+</aura:component>

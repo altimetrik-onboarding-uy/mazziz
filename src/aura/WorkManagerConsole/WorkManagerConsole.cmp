@@ -1,0 +1,38 @@
+<aura:component controller="WorkCardController" implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId" access="global">
+  <!--ATTRIBUTES AND HANDLERS-->
+  <aura:attribute name="recordId" type="Id" />
+  <aura:attribute name="workId" type="String"/>
+  
+
+  <aura:attribute name="worksIndex" type="List" default="['New', 'Ready', 'InProgress','Done']"/>
+<!--worksIndex format:
+ worksIndex = ['new', 'ready', ...] -->
+ <aura:handler event="force:showToast" action="{!c.handleToastEvent}"/>
+
+
+  <aura:attribute name="error" type="String" />
+  <aura:attribute name="record" type="Object" />
+  <aura:attribute name="work" type="Work__c" />
+  
+  <force:recordData aura:id="workService"
+  layoutType="FULL"
+  recordId="{!v.work.Id}"
+  targetError="{!v.error}"
+  targetRecord="{!v.work}"
+  targetFields ="{!v.work}"/>
+
+<!-- Grid: is generated iterating one time for each work´s state-->
+
+<div class="slds-grid slds-wrap">
+    <div class="slds-col"></div>
+      <aura:if isTrue="{!v.worksIndex.length &gt; 0}">
+        <!-- I pass the type of work of each column defined previously in the worksindex attribute-->
+        <!-- Also in case of being in a record view, I pass the recordId status of the contact in sight-->
+        <aura:iteration items="{!v.worksIndex}" var="item">
+          <c:WorkColumn workType="{!item}" contactId="{!v.recordId}"/>
+        </aura:iteration>
+      </aura:if>
+    
+</div>
+
+</aura:component>

@@ -1,0 +1,31 @@
+{
+    "projectName": "WorkManager App",
+    "username": "martinazzo@altimetrik.com",
+    "id": "e6f3ea70-091c-11e9-a35f-8f906620cf6c",
+    "namespace": "",
+    "orgType": "developer",
+    "loginUrl": "https://login.salesforce.com/",
+    "instanceUrl": "https://na85.salesforce.com",
+    "workspace": "C:\\Users\\mazziz\\Documents",
+    "subscription": [
+        "ApexClass",
+        "ApexComponent",
+        "ApexPage",
+        "ApexTrigger",
+        "ApprovalProcess",
+        "AuraDefinitionBundle",
+        "CustomApplication",
+        "CustomLabels",
+        "CustomMetadata",
+        "CustomObject",
+        "CustomTab",
+        "EmailTemplate",
+        "FlexiPage",
+        "Flow",
+        "FlowDefinition",
+        "Layout",
+        "Report",
+        "ReportType",
+        "StaticResource"
+    ]
+}
